@@ -199,11 +199,12 @@
   /* atom */
   .atom-stage{display:grid;place-items:center}
   .atom{width:min(340px,80vw);aspect-ratio:1}
-  .orbit{transform-origin:center;animation:spin 18s linear infinite}
-  .orbit.b{animation-duration:26s;animation-direction:reverse}
-  .orbit.c{animation-duration:34s}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @media (prefers-reduced-motion:reduce){.orbit{animation:none}}
+  /* Rotate the whole rig as one rigid body, about the true centre (150,150).
+     transform-box:view-box makes transform-origin:center resolve to the SVG
+     viewBox centre, so the symmetry is preserved and nothing drifts. */
+  .atom .spin{transform-box:view-box;transform-origin:center;animation:atomspin 34s linear infinite}
+  @keyframes atomspin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.atom .spin{animation:none}}
 
   /* ---------- generic modules ---------- */
   .module{background:var(--surface);border:var(--hair);border-radius:4px;padding:26px}
@@ -374,11 +375,16 @@
     </div>
     <div class="atom-stage">
       <svg class="atom" viewBox="0 0 300 300" role="img" aria-label="Atom mark">
-        <g class="orbit a"><ellipse cx="150" cy="150" rx="120" ry="45" fill="none" stroke="#3A2FF0" stroke-width="3"/><circle cx="270" cy="150" r="9" fill="#3A2FF0"/></g>
-        <g class="orbit b" transform="rotate(60 150 150)"><ellipse cx="150" cy="150" rx="120" ry="45" fill="none" stroke="#15171B" stroke-width="3"/><circle cx="270" cy="150" r="9" fill="#15171B"/></g>
-        <g class="orbit c" transform="rotate(120 150 150)"><ellipse cx="150" cy="150" rx="120" ry="45" fill="none" stroke="#3A2FF0" stroke-width="3"/><circle cx="270" cy="150" r="9" fill="#3A2FF0"/></g>
-        <circle cx="150" cy="150" r="22" fill="#15171B"/>
-        <circle cx="150" cy="150" r="8" fill="#F4F5F1"/>
+        <g class="spin">
+          <ellipse cx="150" cy="150" rx="120" ry="44" fill="none" stroke="#3A2FF0" stroke-width="4"/>
+          <ellipse cx="150" cy="150" rx="120" ry="44" fill="none" stroke="#15171B" stroke-width="4" transform="rotate(60 150 150)"/>
+          <ellipse cx="150" cy="150" rx="120" ry="44" fill="none" stroke="#3A2FF0" stroke-width="4" transform="rotate(120 150 150)"/>
+          <circle cx="270" cy="150" r="10" fill="#3A2FF0"/>
+          <circle cx="90" cy="253.9" r="10" fill="#15171B"/>
+          <circle cx="90" cy="46.1" r="10" fill="#3A2FF0"/>
+        </g>
+        <circle cx="150" cy="150" r="24" fill="#15171B"/>
+        <circle cx="150" cy="150" r="9" fill="#F4F5F1"/>
       </svg>
     </div>
   </div>
