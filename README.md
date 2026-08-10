@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/readme/hero-banner.svg" alt="Atomic Notes — local-first notes app with cloud sync" width="100%" />
+  <img src="Project-Images/hero-banner.svg" alt="Atomic Notes — local-first notes app with cloud sync" width="100%" />
 
   [![Platform](https://img.shields.io/badge/platform-Android%20%C2%B7%20iOS-3A2FF0.svg)](#get-the-app)
   [![License: MIT](https://img.shields.io/badge/License-MIT%20(source%20coming%20soon)-3A2FF0.svg)](#license)
@@ -91,12 +91,16 @@ The UI follows a strict, disciplined system called **Technical Editorial**[cite:
 2.  **Publish Source Code:** Opening the repository to public read access once security hardening is complete[cite: 1, 3].
 3.  **The Atomic Coin System (CONCEPT — NOT LIVE):**
     <div align="center">
-      <img src="assets/readme/atomic-coin-flow.svg" alt="Roadmap concept, not live: planned design for the Atomic Coin system" width="100%" />
+      <img src="Project-Images/atomic-coin-flow.svg" alt="Roadmap concept, not live: planned design for the Atomic Coin system" width="100%" />
     </div>
     Atomic Notes will stay free, but cloud infrastructure is not[cite: 1, 3]. Instead of subscriptions, an opt-in, gamified ad economy is planned[cite: 1, 3]:
+    
     *   Watch 1 rewarded ad to earn 3 particles (1 electron + 1 proton + 1 neutron)[cite: 1, 3].
+      
     *   3 particles automatically form 1 **Atom**[cite: 1, 3].
+      
     *   Collect 3 Atoms to mint 1 **Atomic Coin**[cite: 1, 3].
+      
     *   Spend 1 Atomic Coin to unlock 1 **instant/on-demand cloud sync**[cite: 1, 3].
     
     *Crucial Guarantee:* A free, periodic background sync will **always** remain free for everyone[cite: 1, 3]. Coins will only ever buy speed/convenience, never the basic guarantee that a note is saved and synced[cite: 1, 3].
