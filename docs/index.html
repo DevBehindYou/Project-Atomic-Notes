@@ -144,7 +144,7 @@
     --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
   body{
     margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
     line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
@@ -318,6 +318,7 @@
   .reveal.in{opacity:1;transform:none}
 
   @media (max-width:900px){
+    section{padding:64px 0}
     .hero-grid{grid-template-columns:1fr;gap:30px}
     .atom-stage{order:-1}
     .g3{grid-template-columns:1fr}
