@@ -1,0 +1,11 @@
+# Internal / working material — kept OUT of this public showcase repo.
+# Contains candid planning notes, an internal proposal, superseded drafts,
+# and third-party design references. Remove an entry here to start tracking it.
+Context/
+Proposal/
+GitHub-Pages/
+Project-Images/UIUX-Inspiration/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
