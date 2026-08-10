@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atomic Notes: local-first notes that are actually yours</title>
+<meta name="description" content="Atomic Notes is a local-first, privacy-first notes app with optional per-note cloud sync. No trackers, no ads, no AI, and your notes are never used as training data. Built with Flutter and Supabase." />
+<meta name="keywords" content="local-first notes app, private notes app, no-AI notes app, offline notes, encrypted notes, Flutter notes app, Supabase, open-source notes, privacy, no tracking" />
+<meta name="author" content="DevBehindYou (Ashutosh Sharma)" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+<meta name="theme-color" content="#F4F5F1" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#15171B" media="(prefers-color-scheme: dark)" />
+
+<!--
+  Canonical + social URLs below use this repo's GitHub Pages origin:
+    https://devbehindyou.github.io/Project-Atomic-Notes/
+  If you add a custom domain, update the origin in every tag below, plus
+  robots.txt and sitemap.xml.
+-->
+<link rel="canonical" href="https://devbehindyou.github.io/Project-Atomic-Notes/" />
+<link rel="icon" type="image/png" href="assets/icon.png" />
+<link rel="apple-touch-icon" href="assets/icon.png" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Atomic Notes" />
+<meta property="og:title" content="Atomic Notes: local-first notes that are actually yours" />
+<meta property="og:description" content="No trackers. No ads. No AI. Your notes are never someone's training data. Built with Flutter and Supabase." />
+<meta property="og:url" content="https://devbehindyou.github.io/Project-Atomic-Notes/" />
+<meta property="og:image" content="https://devbehindyou.github.io/Project-Atomic-Notes/assets/og-banner.png" />
+<meta property="og:image:alt" content="Atomic Notes: local-first notes. No trackers, no ads, no AI." />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@devbehindyou" />
+<meta name="twitter:creator" content="@devbehindyou" />
+<meta name="twitter:title" content="Atomic Notes: local-first notes that are actually yours" />
+<meta name="twitter:description" content="No trackers. No ads. No AI. Your notes are never someone's training data." />
+<meta name="twitter:image" content="https://devbehindyou.github.io/Project-Atomic-Notes/assets/og-banner.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<!-- Structured data: SoftwareApplication + author (Person) + FAQ for answer-engine / GEO citability -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Atomic Notes",
+      "operatingSystem": "Android, iOS",
+      "applicationCategory": "ProductivityApplication",
+      "softwareVersion": "1.12.1",
+      "description": "A local-first, privacy-first notes app with optional per-note cloud sync. No trackers, no ads, no AI, and your notes are never used as training data.",
+      "url": "https://devbehindyou.github.io/Project-Atomic-Notes/",
+      "image": "https://devbehindyou.github.io/Project-Atomic-Notes/assets/icon.png",
+      "featureList": [
+        "Local-first on-device storage",
+        "Optional per-note realtime cloud sync",
+        "Text notes and checklists",
+        "Biometric app lock",
+        "No tracking, no ads, no AI",
+        "Fully usable offline"
+      ],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": {
+        "@type": "Person",
+        "name": "Ashutosh Sharma",
+        "alternateName": "DevBehindYou",
+        "url": "https://devbehindyou.vercel.app",
+        "sameAs": [
+          "https://github.com/DevBehindYou",
+          "https://medium.com/@devbehindyou",
+          "https://x.com/devbehindyou"
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Atomic Notes use my notes to train AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Atomic Notes has no AI features and never uses your notes as training data. It ships with no analytics, no crash reporters, no ad SDKs, and no third-party trackers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Atomic Notes notes encrypted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Today notes are protected in transit by HTTPS and at rest by Supabase Row-Level Security, but they are not yet end-to-end encrypted. Client-side end-to-end encryption with AES-256-GCM is in active development and targeted for the next release."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Atomic Notes work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Atomic Notes is local-first: your device holds the primary copy, every note saves instantly on-device, and the app launches at the same speed online or offline. Cloud sync is optional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Atomic Notes free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Atomic Notes is free with a 50-note tier and no subscriptions. A planned, optional rewarded-ad system (the Atomic Coin concept) would only buy faster sync, never access to your notes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Atomic Notes built with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Flutter client with a Supabase backend (Postgres, Auth, Row-Level Security, and Realtime), and Hive CE for on-device local storage."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root{
+    --ink:#15171B; --paper:#F4F5F1; --signal:#3A2FF0;
+    --surface:#F9FAF4; --surface-low:#F3F4EE; --surface-container:#EDEEE8; --surface-high:#E8E9E3;
+    --outline:#76777B; --line:#C6C6CB; --slate:#4A4D55; --on-ink:#F0F1EB;
+    --error:#BA1A1A; --error-bg:#FFDAD6; --on-error-bg:#93000A;
+    --hair:1.5px solid rgba(21,23,27,.16);
+    --maxw:1120px;
+    --display:'Bebas Neue',Impact,sans-serif;
+    --body:'Hanken Grotesk',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+    line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:96px 0;border-top:var(--hair)}
+  h1,h2,h3{font-family:var(--display);font-weight:400;text-transform:uppercase;margin:0;line-height:.98;letter-spacing:.5px}
+  h2{font-size:clamp(2.2rem,5vw,3.4rem)}
+  h3{font-size:1.5rem;letter-spacing:1px}
+  p{margin:0 0 1.1rem}
+  .mono{font-family:var(--mono);text-transform:uppercase;font-size:.72rem;letter-spacing:1.6px}
+  .eyebrow{font-family:var(--mono);text-transform:uppercase;font-size:.72rem;letter-spacing:2px;color:var(--signal);display:inline-block;margin-bottom:18px}
+  .eyebrow::before{content:"// "}
+  .lead{font-size:1.18rem;max-width:64ch;color:#26282e}
+  .sig{color:var(--signal)}
+  .muted{color:var(--slate)}
+
+  /* ---------- nav ---------- */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(244,245,241,.86);backdrop-filter:blur(9px);border-bottom:var(--hair)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-size:1.35rem;letter-spacing:1px;text-decoration:none}
+  .brand .dot{width:26px;height:26px;border-radius:5px;background:#12101C;display:grid;place-items:center;flex:0 0 auto}
+  .brand .dot img{width:20px;height:20px}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-family:var(--mono);text-transform:uppercase;font-size:.7rem;letter-spacing:1.4px;text-decoration:none;color:var(--slate);transition:color .15s;padding:6px 0;border-bottom:2px solid transparent}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.active{color:var(--ink);border-bottom-color:var(--signal)}
+  .nav-cta{background:var(--signal);color:var(--paper)!important;padding:9px 16px!important;border:2px solid var(--signal)}
+  .nav-cta:hover{background:transparent;color:var(--signal)!important}
+  .burger{display:none;background:none;border:var(--hair);border-radius:4px;width:42px;height:38px;cursor:pointer;font-size:1.1rem}
+
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--display);font-size:1.05rem;letter-spacing:1.2px;text-transform:uppercase;padding:13px 24px;text-decoration:none;border-radius:4px;cursor:pointer;transition:all .18s;border:2px solid var(--ink)}
+  .btn-primary{background:var(--signal);border-color:var(--signal);color:var(--paper);position:relative}
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+
+  /* ---------- hero ---------- */
+  .hero{border-top:none;padding:70px 0 84px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .hero h1{font-size:clamp(3.4rem,9vw,6.6rem);letter-spacing:1px}
+  .hero .offset{position:relative;display:inline-block;color:var(--signal)}
+  .hero .offset::after{content:"ATOMIC NOTES";position:absolute;left:-3px;top:3px;color:var(--ink);z-index:-1}
+  .hero .sub{font-family:var(--mono);text-transform:uppercase;letter-spacing:3px;font-size:.82rem;color:var(--slate);margin:6px 0 26px}
+  .hero .lead{margin-bottom:30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-badges{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+  .hero-badges div{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--slate)}
+  .hero-badges b{display:block;font-family:var(--display);font-size:1.7rem;color:var(--ink);letter-spacing:.5px;-webkit-text-fill-color:var(--ink)}
+
+  /* atom */
+  .atom-stage{display:grid;place-items:center}
+  .atom{width:min(340px,80vw);aspect-ratio:1}
+  .orbit{transform-origin:center;animation:spin 18s linear infinite}
+  .orbit.b{animation-duration:26s;animation-direction:reverse}
+  .orbit.c{animation-duration:34s}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (prefers-reduced-motion:reduce){.orbit{animation:none}}
+
+  /* ---------- generic modules ---------- */
+  .module{background:var(--surface);border:var(--hair);border-radius:4px;padding:26px}
+  .grid{display:grid;gap:20px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .num{font-family:var(--mono);color:var(--signal);font-size:.8rem;letter-spacing:1px;font-weight:700}
+
+  /* pill toggle (AI section) */
+  .toggle{display:inline-flex;border:2px solid var(--ink);border-radius:40px;overflow:hidden;margin:6px 0 30px}
+  .toggle button{font-family:var(--mono);text-transform:uppercase;letter-spacing:1.2px;font-size:.72rem;padding:11px 20px;border:none;background:transparent;cursor:pointer;color:var(--slate)}
+  .toggle button.on{background:var(--ink);color:var(--paper)}
+  .panelset .panel{display:none}
+  .panelset .panel.show{display:block;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .cmp{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+  .cmp li{display:flex;gap:14px;align-items:flex-start;padding:16px;border:var(--hair);border-radius:4px;background:var(--paper)}
+  .cmp .mark{font-family:var(--display);font-size:1.4rem;flex:0 0 auto;width:30px;text-align:center}
+  .bad .mark{color:var(--error)}
+  .good .mark{color:var(--signal)}
+  .bad li{background:#fbf1f0;border-color:rgba(186,26,26,.22)}
+  .good li{background:#fff}
+
+  /* gallery */
+  .gallery{display:flex;gap:18px;overflow-x:auto;padding:8px 4px 26px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--signal) transparent}
+  .shot{flex:0 0 220px;scroll-snap-align:center;border:2px solid var(--ink);border-radius:8px;overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .18s}
+  .shot:hover{transform:translateY(-4px)}
+  .shot img{width:100%;aspect-ratio:1080/2460;object-fit:cover;object-position:top}
+  .shot .cap{border-top:2px solid var(--ink);padding:8px 10px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.62rem;letter-spacing:1px;text-transform:uppercase;display:flex;justify-content:space-between;gap:6px}
+  .cap .sig{color:#9d97ff}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(21,23,27,.92);z-index:100;display:none;place-items:center;padding:24px}
+  .lb.open{display:grid}
+  .lb img{max-height:86vh;max-width:92vw;border:2px solid var(--paper);border-radius:8px}
+  .lb .x,.lb .prev,.lb .next{position:absolute;background:var(--paper);color:var(--ink);border:none;font-family:var(--display);font-size:1.4rem;width:52px;height:52px;border-radius:6px;cursor:pointer;display:grid;place-items:center}
+  .lb .x{top:20px;right:20px}
+  .lb .prev{left:16px;top:50%;transform:translateY(-50%)}
+  .lb .next{right:16px;top:50%;transform:translateY(-50%)}
+  .lb .lbcap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:var(--paper);font-family:var(--mono);font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase}
+
+  /* code */
+  .code-tabs{display:flex;flex-wrap:wrap;gap:0;border:2px solid var(--ink);border-bottom:none;border-radius:6px 6px 0 0;overflow:hidden}
+  .code-tabs button{font-family:var(--mono);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;padding:12px 16px;border:none;background:var(--surface-container);cursor:pointer;color:var(--slate);border-right:var(--hair)}
+  .code-tabs button.on{background:var(--ink);color:var(--paper)}
+  .code-wrap{border:2px solid var(--ink);border-radius:0 0 6px 6px;background:#0f1013;position:relative}
+  pre{margin:0;padding:22px;overflow-x:auto;font-family:var(--mono);font-size:.82rem;line-height:1.65;color:#e7e8ea}
+  pre .cm{color:#7f8794}
+  pre .kw{color:#9d97ff}
+  pre .st{color:#8fd3a6}
+  pre .fn{color:#e7c07b}
+  .code-block{display:none}
+  .code-block.show{display:block}
+  .copy{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:.6rem;letter-spacing:1px;text-transform:uppercase;background:rgba(240,241,235,.1);color:var(--paper);border:1px solid rgba(240,241,235,.3);border-radius:4px;padding:6px 9px;cursor:pointer}
+  .copy:hover{background:var(--signal);border-color:var(--signal)}
+
+  /* encryption demo */
+  .demo{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--ink);border-radius:6px;overflow:hidden}
+  .demo .side{padding:22px}
+  .demo .side+.side{border-left:2px solid var(--ink)}
+  .demo label{font-family:var(--mono);font-size:.68rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--slate);display:block;margin-bottom:10px}
+  .demo textarea{width:100%;min-height:130px;resize:vertical;font-family:var(--body);font-size:1rem;border:var(--hair);border-radius:4px;padding:12px;background:#fff;color:var(--ink)}
+  .demo textarea:focus{outline:2px solid var(--signal);border-color:var(--signal)}
+  .demo .out{min-height:130px;font-family:var(--mono);font-size:.74rem;line-height:1.7;word-break:break-all;background:#0f1013;color:#8fd3a6;border-radius:4px;padding:12px;overflow:auto}
+  .demo .out .k{color:#9d97ff}
+  .flag{display:flex;gap:10px;align-items:flex-start;background:var(--surface-container);border:var(--hair);border-left:3px solid var(--signal);border-radius:4px;padding:14px 16px;font-size:.9rem;margin-top:16px}
+
+  /* privacy two-col */
+  .pcol{border:var(--hair);border-radius:6px;overflow:hidden}
+  .pcol .head{padding:16px 20px;font-family:var(--display);letter-spacing:1px;font-size:1.3rem;text-transform:uppercase;border-bottom:2px solid var(--ink)}
+  .pcol.ok .head{background:var(--ink);color:var(--paper)}
+  .pcol.gap .head{background:var(--error-bg);color:var(--on-error-bg)}
+  .pcol ul{list-style:none;margin:0;padding:8px 20px 20px}
+  .pcol li{padding:12px 0;border-bottom:var(--hair);font-size:.96rem}
+  .pcol li:last-child{border-bottom:none}
+  .pcol li b{font-family:var(--mono);font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--slate);display:block;margin-bottom:3px}
+
+  /* swatches */
+  .sw{display:flex;flex-direction:column;border:var(--hair);border-radius:6px;overflow:hidden}
+  .sw .chip{height:120px}
+  .sw .meta{padding:14px 16px}
+  .sw .meta b{font-family:var(--display);letter-spacing:1px;font-size:1.3rem;text-transform:uppercase}
+  .sw .meta code{font-family:var(--mono);font-size:.75rem;color:var(--slate)}
+  .typerow{border:var(--hair);border-radius:6px;padding:20px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:12px;background:var(--surface)}
+
+  /* roadmap timeline */
+  .tl{position:relative;margin-left:8px;padding-left:30px;border-left:2px solid var(--ink)}
+  .tl .item{position:relative;padding:0 0 34px}
+  .tl .item::before{content:"";position:absolute;left:-39px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--ink)}
+  .tl .item.now::before{background:var(--signal);border-color:var(--signal);box-shadow:0 0 0 5px rgba(58,47,240,.18)}
+  .tl .tag{font-family:var(--mono);font-size:.64rem;letter-spacing:1.4px;text-transform:uppercase;padding:3px 9px;border-radius:12px;border:1.5px solid var(--ink);display:inline-block;margin-bottom:8px}
+  .tl .tag.now{background:var(--signal);color:var(--paper);border-color:var(--signal)}
+  .tl .tag.concept{border-style:dashed}
+
+  /* dist cards */
+  .dist{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border:var(--hair);border-radius:6px;background:var(--surface);margin-bottom:12px}
+  .dist .k{font-family:var(--display);font-size:1.3rem;letter-spacing:1px;text-transform:uppercase;flex:0 0 210px}
+  .dist.no{opacity:.72}
+
+  /* footer */
+  footer{background:var(--ink);color:var(--on-ink);padding:64px 0 44px;border-top:none}
+  footer h2{color:var(--paper)}
+  footer a{color:#b9b4ff;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .flinks{display:flex;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:.78rem;letter-spacing:1px;text-transform:uppercase;margin:22px 0}
+  .fbot{border-top:1px solid rgba(240,241,235,.16);margin-top:34px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;letter-spacing:1px;color:#9a9ba0;text-transform:uppercase}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .atom-stage{order:-1}
+    .g3{grid-template-columns:1fr}
+    .g2{grid-template-columns:1fr}
+    .demo{grid-template-columns:1fr}
+    .demo .side+.side{border-left:none;border-top:2px solid var(--ink)}
+    .nav-links{position:fixed;inset:64px 0 auto 0;flex-direction:column;background:var(--paper);border-bottom:var(--hair);padding:18px 24px;gap:6px;display:none}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 0;border-bottom:var(--hair);width:100%}
+    .burger{display:block}
+    .dist .k{flex-basis:auto}
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" style="position:absolute;left:-9999px">Skip to content</a>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="dot"><img src="assets/icon.png" alt="" /></span> ATOMIC&nbsp;NOTES
+    </a>
+    <nav class="nav-links" id="navlinks">
+      <a href="#why">Why</a>
+      <a href="#problem">The Problem</a>
+      <a href="#interface">Interface</a>
+      <a href="#code">Under the Hood</a>
+      <a href="#encryption">Encryption</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="nav-cta" href="#get">Get the App</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Local-first · Flutter + Supabase · reviving 2026</span>
+      <h1><span class="offset">ATOMIC NOTES</span></h1>
+      <p class="sub">Notes that are actually yours.</p>
+      <p class="lead">A local-first notes app with optional, per-note cloud sync. No trackers, no ads, no AI. <strong>Your notes are never someone's training data.</strong> It was born from a real account breach, then rebuilt to keep it that way by design.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#get">↓ Get the App</a>
+        <a class="btn btn-ghost" href="#code">Read the Code</a>
+      </div>
+      <div class="hero-badges">
+        <div><b>0</b>trackers / ads / AI</div>
+        <div><b>50</b>free notes, server-enforced</div>
+        <div><b>100%</b>usable offline</div>
+      </div>
+    </div>
+    <div class="atom-stage">
+      <svg class="atom" viewBox="0 0 300 300" role="img" aria-label="Atom mark">
+        <g class="orbit a"><ellipse cx="150" cy="150" rx="120" ry="45" fill="none" stroke="#3A2FF0" stroke-width="3"/><circle cx="270" cy="150" r="9" fill="#3A2FF0"/></g>
+        <g class="orbit b" transform="rotate(60 150 150)"><ellipse cx="150" cy="150" rx="120" ry="45" fill="none" stroke="#15171B" stroke-width="3"/><circle cx="270" cy="150" r="9" fill="#15171B"/></g>
+        <g class="orbit c" transform="rotate(120 150 150)"><ellipse cx="150" cy="150" rx="120" ry="45" fill="none" stroke="#3A2FF0" stroke-width="3"/><circle cx="270" cy="150" r="9" fill="#3A2FF0"/></g>
+        <circle cx="150" cy="150" r="22" fill="#15171B"/>
+        <circle cx="150" cy="150" r="8" fill="#F4F5F1"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section id="why">
+  <div class="wrap reveal">
+    <span class="eyebrow">Why it exists</span>
+    <h2>It started with a<br /><span class="sig">breach.</span></h2>
+    <div class="grid g2" style="margin-top:28px;align-items:start">
+      <div>
+        <p class="lead">The developer used a mainstream notes app the way most people do. Ideas, mostly. Also a few account passwords and private notes he never should have typed there.</p>
+        <p>Then one ordinary day the emails started. <em>"New sign-in from a location you don't usually use."</em> One account, then another. What followed was a frantic afternoon of password resets, token revocations, and locked-out services.</p>
+      </div>
+      <div class="module" style="background:var(--ink);color:var(--on-ink)">
+        <span class="mono" style="color:#9d97ff">The lesson</span>
+        <p style="font-family:var(--display);font-size:1.9rem;line-height:1.05;text-transform:uppercase;margin:14px 0 0;color:var(--paper)">Stop using apps that take your data hostage and use it for their own profit.</p>
+        <p class="muted" style="margin-top:16px;color:#c9cad0">So Atomic Notes became the app he wished he'd had. He shelved it three years ago, waiting on the tech to catch up. It has. Now it's <span class="sig" style="color:#9d97ff">revived</span>: a new design system, a re-architected sync engine, and a privacy-first foundation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM (AI) ================= -->
+<section id="problem">
+  <div class="wrap reveal">
+    <span class="eyebrow">The problem in 2026</span>
+    <h2>Your notes became<br /><span class="sig">training data.</span></h2>
+    <p class="lead" style="margin-top:20px">The industry quietly changed the deal. "Free" now tends to mean <strong>your content is the product</strong>. It gets read, profiled, and more and more often fed into models as training data. Your notes are the most personal text you'll ever write. That's not a corpus you should have to donate.</p>
+
+    <div class="toggle" role="tablist" aria-label="Comparison">
+      <button class="on" data-panel="them">What most apps take</button>
+      <button data-panel="us">What Atomic takes</button>
+    </div>
+
+    <div class="panelset">
+      <div class="panel show" id="them">
+        <ul class="cmp bad">
+          <li><span class="mark">✕</span><div><b>Your words.</b> Content used to "improve services" and train AI models.</div></li>
+          <li><span class="mark">✕</span><div><b>Your behavior.</b> Analytics and crash SDKs profiling how, when, and what you write.</div></li>
+          <li><span class="mark">✕</span><div><b>Your context.</b> Ad SDKs reading signals to target you.</div></li>
+          <li><span class="mark">✕</span><div><b>Your location of record.</b> Cloud-first by default, so their servers hold the master copy.</div></li>
+        </ul>
+      </div>
+      <div class="panel" id="us">
+        <ul class="cmp good">
+          <li><span class="mark">✓</span><div><b>Nothing to train on.</b> The app has no AI, so your notes are never used for training.</div></li>
+          <li><span class="mark">✓</span><div><b>Zero telemetry.</b> No analytics, no crash reporters, no third-party trackers shipped.</div></li>
+          <li><span class="mark">✓</span><div><b>No ad SDKs</b> in the app today.</div></li>
+          <li><span class="mark">✓</span><div><b>Local-first.</b> Your device holds the source copy, and the cloud stays opt-in and per-note.</div></li>
+        </ul>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:8px">This isn't a posture bolted on afterward. It's <em>why</em> the app is local-first, <em>why</em> there's no AI, and <em>why</em> the funding model sells convenience, never your content.</p>
+  </div>
+</section>
+
+<!-- ================= INTERFACE ================= -->
+<section id="interface">
+  <div class="wrap reveal">
+    <span class="eyebrow">App interface · built with Flutter</span>
+    <h2>Ink on paper.<br />One <span class="sig">signal.</span></h2>
+    <p class="lead" style="margin:18px 0 6px">Real screens from the app. Tap any shot to enlarge.</p>
+  </div>
+  <div class="wrap">
+    <div class="gallery" id="gallery">
+      <figure class="shot" data-i="0"><img src="assets/mockups/atomic-notes-mockup-image-03.png" alt="Notes grid"/><figcaption class="cap"><span>Notes</span><span class="sig">01</span></figcaption></figure>
+      <figure class="shot" data-i="1"><img src="assets/mockups/atomic-notes-mockup-image-05.png" alt="Text note editor"/><figcaption class="cap"><span>Editor · Note</span><span class="sig">02</span></figcaption></figure>
+      <figure class="shot" data-i="2"><img src="assets/mockups/atomic-notes-mockup-image-04.png" alt="Checklist editor"/><figcaption class="cap"><span>Editor · Checklist</span><span class="sig">03</span></figcaption></figure>
+      <figure class="shot" data-i="3"><img src="assets/mockups/atomic-notes-mockup-image-07.png" alt="Database stats"/><figcaption class="cap"><span>Database</span><span class="sig">04</span></figcaption></figure>
+      <figure class="shot" data-i="4"><img src="assets/mockups/atomic-notes-mockup-image-09.png" alt="Security / biometric"/><figcaption class="cap"><span>Security</span><span class="sig">05</span></figcaption></figure>
+      <figure class="shot" data-i="5"><img src="assets/mockups/atomic-notes-mockup-image-08.png" alt="Cloud sync toggle"/><figcaption class="cap"><span>Cloud Sync</span><span class="sig">06</span></figcaption></figure>
+      <figure class="shot" data-i="6"><img src="assets/mockups/atomic-notes-mockup-image-06.png" alt="Selection mode"/><figcaption class="cap"><span>Select &amp; Delete</span><span class="sig">07</span></figcaption></figure>
+      <figure class="shot" data-i="7"><img src="assets/mockups/atomic-notes-mockup-image-02.png" alt="Settings"/><figcaption class="cap"><span>Settings</span><span class="sig">08</span></figcaption></figure>
+      <figure class="shot" data-i="8"><img src="assets/mockups/atomic-notes-mockup-image-10.png" alt="Danger zone"/><figcaption class="cap"><span>Danger Zone</span><span class="sig">09</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= UNDER THE HOOD ================= -->
+<section id="code">
+  <div class="wrap reveal">
+    <span class="eyebrow">Under the hood</span>
+    <h2>Proof, not<br /><span class="sig">promises.</span></h2>
+    <p class="lead" style="margin:18px 0 26px">The parts that matter, straight from the source. One repository as the single source of truth. A sync engine that never clobbers your unsynced edits. And limits enforced where they actually count.</p>
+
+    <div class="grid g3" style="margin-bottom:34px">
+      <div class="module"><div class="num">01 · LOCAL-FIRST</div><h3 style="margin:10px 0">Instant save</h3><p class="muted" style="margin:0">Every keystroke settles into on-device Hive storage. Launch never waits on the network, on full 5G or in airplane mode.</p></div>
+      <div class="module"><div class="num">02 · SYNC</div><h3 style="margin:10px 0">Per-note, merged</h3><p class="muted" style="margin:0">One row per note, realtime stream, tombstones for deletes, last-write-wins on a <em>server-set</em> timestamp.</p></div>
+      <div class="module"><div class="num">03 · INTEGRITY</div><h3 style="margin:10px 0">Server-authoritative</h3><p class="muted" style="margin:0">Row-Level Security + Postgres triggers. Quotas and timestamps can't be spoofed by a client.</p></div>
+    </div>
+
+    <div class="code-tabs" id="codetabs">
+      <button class="on" data-code="c-boot">main.dart · boot</button>
+      <button data-code="c-sync">notes_repository.dart · merge</button>
+      <button data-code="c-trigger">002 · updated_at trigger</button>
+      <button data-code="c-limit">003 · server quota</button>
+    </div>
+    <div class="code-wrap">
+      <button class="copy" data-copy>Copy</button>
+      <div class="code-block show" id="c-boot"><pre><span class="cm">// lib/main.dart : startup can time out, but it can never silently die.</span>
+<span class="kw">await</span> Supabase.<span class="fn">initialize</span>(url: cred.PROJECT_URL, publishableKey: cred.API_KEY)
+    .<span class="fn">timeout</span>(<span class="kw">const</span> Duration(seconds: <span class="st">15</span>));
+<span class="kw">await</span> Hive.<span class="fn">initFlutter</span>();
+<span class="kw">await</span> NotesRepository.instance.<span class="fn">init</span>();   <span class="cm">// loads the local copy first</span>
+<span class="cm">// on failure: runApp(StartupFailedApp(error)). never exit(0)</span></pre></div>
+      <div class="code-block" id="c-sync"><pre><span class="cm">// lib/database/notes_repository.dart : merge without clobbering unsynced work</span>
+<span class="kw">if</span> (local.dirty &amp;&amp; local.updatedAt.<span class="fn">isAfter</span>(remote.updatedAt)) <span class="kw">continue</span>;
+<span class="kw">if</span> (remote.updatedAt.<span class="fn">isAfter</span>(local.updatedAt)) {
+  _notes[remote.id] = remote;              <span class="cm">// remote is newer → take it</span>
+  <span class="fn">unawaited</span>(_box.<span class="fn">put</span>(remote.id, remote.<span class="fn">toMap</span>()));
+}</pre></div>
+      <div class="code-block" id="c-trigger"><pre><span class="cm">-- supabase/migrations/002_per_note_realtime.sql</span>
+<span class="cm">-- updated_at is server-authoritative: a bad client clock cannot win a conflict.</span>
+<span class="kw">create trigger</span> note_touch_updated_at
+  <span class="kw">before insert or update on</span> public.note
+  <span class="kw">for each row execute function</span> public.<span class="fn">touch_updated_at</span>();</pre></div>
+      <div class="code-block" id="c-limit"><pre><span class="cm">-- supabase/migrations/003_note_limit.sql</span>
+<span class="cm">-- The 50-note tier is a UI hint AND a database rule. curl can't add note #51.</span>
+<span class="kw">if</span> live &gt;= allowance <span class="kw">then</span>
+  <span class="kw">raise exception</span> <span class="st">'note_limit_reached'</span> <span class="kw">using</span> errcode = <span class="st">'check_violation'</span>;
+<span class="kw">end if</span>;</pre></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENCRYPTION ================= -->
+<section id="encryption">
+  <div class="wrap reveal">
+    <span class="eyebrow">Encryption · in active development</span>
+    <h2>Sealed on your device,<br />before it <span class="sig">ever leaves.</span></h2>
+    <p class="lead" style="margin:18px 0 8px">The next release closes the one real gap. Note content gets encrypted on-device with <strong>AES-256-GCM</strong>, under a key derived from your credentials, so the server only ever stores ciphertext. Here's the design being built:</p>
+
+    <div class="code-wrap" style="border-radius:6px;margin:22px 0 10px">
+      <button class="copy" data-copy>Copy</button>
+      <pre><span class="cm">// DESIGN: client-side encryption shipping in the next release.</span>
+<span class="cm">// Notes are sealed on-device. Only ciphertext + nonce are ever synced.</span>
+<span class="kw">import</span> <span class="st">'package:cryptography/cryptography.dart'</span>;
+
+<span class="kw">final</span> algorithm = AesGcm.<span class="fn">with256bits</span>();
+
+Future&lt;SecretBox&gt; <span class="fn">sealNote</span>(String plaintext, SecretKey key) =&gt;
+    algorithm.<span class="fn">encrypt</span>(<span class="fn">utf8.encode</span>(plaintext), secretKey: key);
+
+<span class="cm">// key = Argon2id( passphrase, per-user salt ). Derived locally, never uploaded.</span>
+<span class="cm">// server row stores only: { nonce, ciphertext, mac }. Unreadable server-side.</span></pre>
+    </div>
+
+    <h3 style="margin:36px 0 6px">Try the concept, live</h3>
+    <p class="muted" style="margin:0 0 18px">This runs entirely in your browser through the Web Crypto API, with a throwaway AES-256-GCM key. Type on the left. What the server <em>would</em> see shows up on the right. Your text never leaves this page.</p>
+    <div class="demo">
+      <div class="side">
+        <label for="plain">Plaintext (what you write)</label>
+        <textarea id="plain" spellcheck="false">Wi-Fi password: hunter2. Do NOT sync this in plaintext.</textarea>
+      </div>
+      <div class="side">
+        <label>Ciphertext (what the cloud would store)</label>
+        <div class="out" id="cipher" aria-live="polite"></div>
+      </div>
+    </div>
+    <div class="flag">
+      <span aria-hidden="true">🔐</span>
+      <span><strong>Honest status:</strong> this is an <em>illustration</em> of the approach. Real AES-256-GCM, but with a random demo key. In the app, encryption is <strong>in active development for the next release</strong>. Note content today is protected by HTTPS and Row-Level Security, but it isn't end-to-end encrypted yet. See the reality check below.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRIVACY REALITY CHECK ================= -->
+<section id="privacy">
+  <div class="wrap reveal">
+    <span class="eyebrow">Privacy &amp; security · the honest version</span>
+    <h2>Exactly where it<br /><span class="sig">stands today.</span></h2>
+    <p class="lead" style="margin:18px 0 28px">An app built in reaction to a data breach doesn't get to overclaim security. So, precisely:</p>
+    <div class="grid g2">
+      <div class="pcol ok">
+        <div class="head">Protected today</div>
+        <ul>
+          <li><b>In transit</b> All backend traffic is over HTTPS / TLS.</li>
+          <li><b>Access control</b> Supabase Row-Level Security. Every policy is <code>auth.uid() = user_id</code>, so only your account touches your rows.</li>
+          <li><b>No tracking</b> Zero telemetry: no analytics, no crash reporters, no ad SDKs, no third-party trackers.</li>
+          <li><b>No AI</b> Nothing sends your notes to a model. No content is used for training.</li>
+          <li><b>Device lock</b> Optional biometric unlock gates the app locally.</li>
+        </ul>
+      </div>
+      <div class="pcol gap">
+        <div class="head">Not protected yet</div>
+        <ul>
+          <li><b>End-to-end encryption</b> Note content sits as ordinary text in your row. Transport and access control protect it, but the operator could still read it. <strong>In active development for the next release.</strong></li>
+          <li><b>Local at-rest</b> On-device storage isn't encrypted at rest today.</li>
+          <li><b>Why say so</b> Encoding and access control aren't cryptography, and this page won't pretend otherwise. Being exact now is the whole point.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DESIGN SYSTEM ================= -->
+<section id="design">
+  <div class="wrap reveal">
+    <span class="eyebrow">Design system · "Technical Editorial"</span>
+    <h2>Restraint as a<br /><span class="sig">feature.</span></h2>
+    <p class="lead" style="margin:18px 0 26px">Condensed uppercase headings, hairline rules instead of shadows, and one accent color. The only "shadow" in the whole app is a solid 2px zero-blur offset that mimics offset print.</p>
+    <div class="grid g3" style="margin-bottom:26px">
+      <div class="sw"><div class="chip" style="background:#15171B"></div><div class="meta"><b>Ink</b><br /><code>#15171B</code> · type, borders</div></div>
+      <div class="sw"><div class="chip" style="background:#F4F5F1;border-bottom:var(--hair)"></div><div class="meta"><b>Paper</b><br /><code>#F4F5F1</code> · the canvas</div></div>
+      <div class="sw"><div class="chip" style="background:#3A2FF0"></div><div class="meta"><b>Signal</b><br /><code>#3A2FF0</code> · the only accent</div></div>
+    </div>
+    <div class="typerow"><span style="font-family:var(--display);font-size:2rem;letter-spacing:1px">BEBAS NEUE</span><span class="mono">Display · headings · uppercase</span></div>
+    <div class="typerow"><span style="font-family:var(--body);font-size:1.3rem">Hanken Grotesk</span><span class="mono">Body · narrative</span></div>
+    <div class="typerow"><span style="font-family:var(--mono);font-size:1.1rem">JetBrains Mono</span><span class="mono">Metadata · counts · status</span></div>
+  </div>
+</section>
+
+<!-- ================= ROADMAP ================= -->
+<section id="roadmap">
+  <div class="wrap reveal">
+    <span class="eyebrow">Roadmap</span>
+    <h2>Where it's <span class="sig">going.</span></h2>
+    <p class="lead" style="margin:18px 0 30px">Nothing below is finished. This is intended direction, not current behavior.</p>
+    <div class="tl">
+      <div class="item now">
+        <span class="tag now">In progress · next release</span>
+        <h3>Client-side encryption</h3>
+        <p class="muted">On-device AES-256-GCM under a credential-derived key. The prerequisite for opening the source.</p>
+      </div>
+      <div class="item">
+        <span class="tag">Planned</span>
+        <h3>Publish the source</h3>
+        <p class="muted">Open the repository to public read access once encryption and hardening are integrated.</p>
+      </div>
+      <div class="item">
+        <span class="tag">Planned</span>
+        <h3>Distribution &amp; developer verification</h3>
+        <p class="muted">GitHub Releases first. An Amazon Appstore listing, strictly to satisfy AdMob's recognized-store requirement. Android Developer Verification, registered early.</p>
+      </div>
+      <div class="item">
+        <span class="tag concept">Concept · not live</span>
+        <h3>The Atomic Coin system</h3>
+        <p class="muted">A gamified, opt-in rewarded-ad economy to fund cloud infrastructure without subscriptions.</p>
+        <div style="border:var(--hair);border-radius:6px;overflow:hidden;margin-top:14px;background:#fff">
+          <img src="assets/atomic-coin-flow.svg" alt="Roadmap concept, not live: the planned Atomic Coin flow" />
+        </div>
+        <p class="muted" style="margin-top:12px"><strong>The guarantee:</strong> a free periodic background sync stays free for everyone. Coins only ever buy <em>speed</em>. They never buy the guarantee that a note is saved, and never buy access to your data. Ad completions get verified server-side (SSV).</p>
+      </div>
+      <div class="item">
+        <span class="tag">Later</span>
+        <h3>Task &amp; reminder notifications</h3>
+        <p class="muted">Local notifications for checklists and reminders once the core is stable.</p>
+      </div>
+    </div>
+    <div class="flag" style="border-left-color:var(--error)"><span aria-hidden="true">⛔</span><span><strong>Explicitly not on the roadmap:</strong> AI features and paid subscriptions. Both got evaluated, then rejected. They push toward the exact data-hungry model Atomic Notes exists to avoid.</span></div>
+  </div>
+</section>
+
+<!-- ================= GET THE APP ================= -->
+<section id="get">
+  <div class="wrap reveal">
+    <span class="eyebrow">Get the app</span>
+    <h2>Sideload it.<br />Keep <span class="sig">control.</span></h2>
+    <p class="lead" style="margin:18px 0 28px">GitHub-first distribution. No Play Store gate, no account harvesting.</p>
+    <div class="dist"><div class="k">Android</div><div>Prebuilt releases via the <a class="sig" href="../../releases" style="text-decoration:underline">GitHub Releases</a> page. Install the debug APK to test on any device.</div></div>
+    <div class="dist"><div class="k">iOS</div><div>Planned. An unsigned iOS build already compiles in CI. Signed distribution needs an Apple Developer account.</div></div>
+    <div class="dist no"><div class="k">Google Play</div><div>No Play Store listing is planned. The Play Console fee is a real barrier for a solo, no-budget project.</div></div>
+    <div class="dist no"><div class="k">Amazon · F-Droid</div><div>An Amazon Appstore listing is planned strictly for future rewarded-ads eligibility. F-Droid may follow as a separate ad-free build flavor.</div></div>
+    <div style="margin-top:26px">
+      <a class="btn btn-primary" href="../../releases">↓ Download from Releases</a>
+      <a class="btn btn-ghost" href="https://github.com/DevBehindYou" style="margin-left:10px">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <span class="eyebrow" style="color:#9d97ff">Atomic Notes</span>
+    <h2>Local-first · no tracking · no ads ·<br /><span style="color:#b9b4ff">your notes are yours.</span></h2>
+    <div class="flinks">
+      <a href="https://devbehindyou.vercel.app">Portfolio</a>
+      <a href="https://github.com/DevBehindYou">GitHub</a>
+      <a href="https://medium.com/@devbehindyou">Medium</a>
+      <a href="https://x.com/devbehindyou">X</a>
+    </div>
+    <div class="fbot">
+      <span>Built by DevBehindYou (Ashutosh Sharma) · MIT License</span>
+      <span>Flutter · Supabase · Hive CE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+  <button class="x" id="lbx" aria-label="Close">✕</button>
+  <button class="prev" id="lbprev" aria-label="Previous">‹</button>
+  <img id="lbimg" src="" alt="" />
+  <button class="next" id="lbnext" aria-label="Next">›</button>
+  <div class="lbcap" id="lbcap"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- mobile nav ----
+  var burger=document.getElementById('burger'), links=document.getElementById('navlinks');
+  burger.addEventListener('click',function(){links.classList.toggle('open');});
+  links.addEventListener('click',function(e){if(e.target.tagName==='A')links.classList.remove('open');});
+
+  // ---- scroll spy ----
+  var navMap={};
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function(a){navMap[a.getAttribute('href').slice(1)]=a;});
+  var spy=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var id=e.target.id, a=navMap[id];
+        document.querySelectorAll('.nav-links a').forEach(function(x){x.classList.remove('active');});
+        if(a)a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('main section[id]').forEach(function(s){spy.observe(s);});
+
+  // ---- reveal on scroll ----
+  var rev=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rev.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){rev.observe(el);});
+
+  // ---- AI comparison toggle ----
+  document.querySelectorAll('.toggle button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.toggle button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      document.querySelectorAll('.panelset .panel').forEach(function(p){p.classList.remove('show');});
+      document.getElementById(b.dataset.panel).classList.add('show');
+    });
+  });
+
+  // ---- code tabs ----
+  document.querySelectorAll('#codetabs button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('#codetabs button').forEach(function(x){x.classList.remove('on');});
+      b.classList.add('on');
+      document.querySelectorAll('#code .code-block').forEach(function(c){c.classList.remove('show');});
+      document.getElementById(b.dataset.code).classList.add('show');
+    });
+  });
+
+  // ---- copy buttons ----
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.parentElement.querySelector('.code-block.show pre')||btn.parentElement.querySelector('pre');
+      if(!pre)return;
+      navigator.clipboard.writeText(pre.innerText).then(function(){
+        var t=btn.textContent;btn.textContent='Copied ✓';setTimeout(function(){btn.textContent=t;},1400);
+      });
+    });
+  });
+
+  // ---- lightbox ----
+  var shots=[].slice.call(document.querySelectorAll('.shot')), lb=document.getElementById('lb'),
+      lbimg=document.getElementById('lbimg'), lbcap=document.getElementById('lbcap'), cur=0;
+  function open(i){
+    cur=(i+shots.length)%shots.length;
+    var img=shots[cur].querySelector('img');
+    lbimg.src=img.src;lbimg.alt=img.alt;
+    lbcap.textContent=shots[cur].querySelector('.cap span').textContent+' · '+(cur+1)+' / '+shots.length;
+    lb.classList.add('open');
+  }
+  function close(){lb.classList.remove('open');lbimg.src='';}
+  shots.forEach(function(s,i){s.addEventListener('click',function(){open(i);});});
+  document.getElementById('lbx').addEventListener('click',close);
+  document.getElementById('lbnext').addEventListener('click',function(){open(cur+1);});
+  document.getElementById('lbprev').addEventListener('click',function(){open(cur-1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    if(e.key==='ArrowRight')open(cur+1);
+    if(e.key==='ArrowLeft')open(cur-1);
+  });
+
+  // ---- live AES-256-GCM demo (Web Crypto) ----
+  var plain=document.getElementById('plain'), out=document.getElementById('cipher'), key=null, t;
+  function b64(buf){var b='',a=new Uint8Array(buf);for(var i=0;i<a.length;i++)b+=String.fromCharCode(a[i]);return btoa(b);}
+  function render(){
+    if(!(window.crypto&&crypto.subtle)){out.textContent='(Web Crypto not available in this browser)';return;}
+    var text=plain.value;
+    if(!text){out.innerHTML='<span class="k">// type on the left…</span>';return;}
+    (key?Promise.resolve(key):crypto.subtle.generateKey({name:'AES-GCM',length:256},true,['encrypt']).then(function(k){key=k;return k;}))
+    .then(function(k){
+      var iv=crypto.getRandomValues(new Uint8Array(12));
+      return crypto.subtle.encrypt({name:'AES-GCM',iv:iv},k,new TextEncoder().encode(text)).then(function(ct){
+        out.innerHTML='<span class="k">algo</span>  AES-256-GCM\n<span class="k">nonce</span> '+b64(iv)+'\n<span class="k">cipher+mac</span>\n'+b64(ct);
+      });
+    }).catch(function(){out.textContent='(encryption error)';});
+  }
+  plain.addEventListener('input',function(){clearTimeout(t);t=setTimeout(render,120);});
+  render();
+
+  // ---- year already static; nothing else ----
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="100%" height="100%" role="img" aria-label="Roadmap concept, not live: planned design for the Atomic Coin system">
+  <rect width="1200" height="380" fill="#F4F5F1" />
+
+  <defs>
+    <marker id="arrowSignal" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#3A2FF0" />
+    </marker>
+  </defs>
+
+  <!-- Header -->
+  <text x="600" y="48" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#15171B" text-anchor="middle" letter-spacing="1.2">THE ATOMIC COIN</text>
+  <text x="600" y="73" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" fill="#15171B" opacity="0.6" text-anchor="middle" letter-spacing="2">HOW SYNC WOULD STAY FUNDED — WATCH, COLLECT, UNLOCK</text>
+
+  <!-- Planned / not live badge -->
+  <g transform="translate(600, 100)">
+    <rect x="-150" y="-15" width="300" height="30" rx="15" fill="none" stroke="#15171B" stroke-width="2" stroke-dasharray="5 4" />
+    <text x="0" y="5" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="12" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1.2">ROADMAP CONCEPT &#8212; NOT LIVE</text>
+  </g>
+
+  <!-- ============ STAGE 1: Watch an ad ============ -->
+  <g transform="translate(170, 210)">
+    <rect x="-35" y="-58" width="70" height="116" rx="14" fill="#F4F5F1" stroke="#15171B" stroke-width="3" />
+    <rect x="-26" y="-44" width="52" height="76" rx="4" fill="#FFFFFF" stroke="#15171B" stroke-width="1.5" opacity="0.5" />
+    <circle cx="0" cy="-6" r="20" fill="none" stroke="#3A2FF0" stroke-width="3" />
+    <path d="M -7 -17 L 14 -6 L -7 5 Z" fill="#3A2FF0" />
+  </g>
+  <text x="170" y="290" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">WATCH A</text>
+  <text x="170" y="308" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">REWARDED AD</text>
+
+  <!-- Connector 1 -->
+  <path d="M 210 210 Q 315 188 385 210" stroke="#3A2FF0" stroke-width="2.5" stroke-dasharray="6 6" fill="none" marker-end="url(#arrowSignal)" />
+  <text x="315" y="172" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="12" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="0.5">+3 PARTICLES</text>
+
+  <!-- ============ STAGE 2: Atom forms ============ -->
+  <g transform="translate(460, 210)">
+    <ellipse cx="0" cy="0" rx="75" ry="27" fill="none" stroke="#3A2FF0" stroke-width="2.5" />
+    <ellipse cx="0" cy="0" rx="75" ry="27" fill="none" stroke="#3A2FF0" stroke-width="2.5" transform="rotate(60)" />
+    <ellipse cx="0" cy="0" rx="75" ry="27" fill="none" stroke="#3A2FF0" stroke-width="2.5" transform="rotate(120)" />
+    <circle cx="2" cy="2" r="25" fill="#3A2FF0" />
+    <circle cx="0" cy="0" r="25" fill="#15171B" />
+    <circle cx="75" cy="0" r="6" fill="#3A2FF0" />
+    <circle cx="-37.5" cy="64.9" r="6" fill="#3A2FF0" />
+    <circle cx="-37.5" cy="-64.9" r="6" fill="#3A2FF0" />
+  </g>
+  <text x="460" y="290" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">3 PARTICLES</text>
+  <text x="460" y="308" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">= 1 ATOM</text>
+
+  <!-- Connector 2 -->
+  <path d="M 540 210 Q 630 188 700 210" stroke="#3A2FF0" stroke-width="2.5" stroke-dasharray="6 6" fill="none" marker-end="url(#arrowSignal)" />
+  <text x="630" y="172" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="12" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="0.5">&#215;3 ATOMS</text>
+
+  <!-- ============ STAGE 3: Atomic Coin ============ -->
+  <g transform="translate(750, 210)">
+    <circle cx="0" cy="0" r="45" fill="#F4F5F1" stroke="#3A2FF0" stroke-width="4" />
+    <circle cx="0" cy="0" r="34" fill="none" stroke="#3A2FF0" stroke-width="1.5" opacity="0.5" />
+    <ellipse cx="0" cy="0" rx="22" ry="8" fill="none" stroke="#15171B" stroke-width="2" />
+    <ellipse cx="0" cy="0" rx="22" ry="8" fill="none" stroke="#15171B" stroke-width="2" transform="rotate(60)" />
+    <ellipse cx="0" cy="0" rx="22" ry="8" fill="none" stroke="#15171B" stroke-width="2" transform="rotate(120)" />
+    <circle cx="0" cy="0" r="6" fill="#15171B" />
+  </g>
+  <text x="750" y="290" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">1 ATOMIC</text>
+  <text x="750" y="308" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">COIN</text>
+
+  <!-- Connector 3 -->
+  <path d="M 830 210 Q 920 188 990 210" stroke="#15171B" stroke-width="2.5" stroke-dasharray="6 6" fill="none" marker-end="url(#arrowSignal)" />
+  <text x="920" y="172" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="12" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="0.5">SPEND</text>
+
+  <!-- ============ STAGE 4: Instant sync unlocked ============ -->
+  <g transform="translate(1040, 210)">
+    <circle cx="0" cy="0" r="45" fill="#F4F5F1" stroke="#15171B" stroke-width="3" />
+    <path d="M 0 -20 A 20 20 0 1 1 -20 0" stroke="#3A2FF0" stroke-width="4" fill="none" stroke-linecap="round" marker-end="url(#arrowSignal)" />
+  </g>
+  <text x="1040" y="290" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">INSTANT SYNC</text>
+  <text x="1040" y="308" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="13" font-weight="700" fill="#15171B" text-anchor="middle" letter-spacing="1">UNLOCKED</text>
+
+  <!-- Footer -->
+  <text x="600" y="355" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="12.5" fill="#15171B" opacity="0.55" text-anchor="middle" letter-spacing="0.5">baseline background sync is intended to stay free for everyone — coins would only ever buy speed</text>
+</svg>

@@ -1,0 +1,53 @@
+name: Deploy showcase site (GitHub Pages)
+
+# Publishes the marketing / showcase one-pager in `docs/` to GitHub Pages.
+#
+# ONE-TIME SETUP (repo owner, in the GitHub UI):
+#   Settings → Pages → Build and deployment → Source → "GitHub Actions".
+#   That is it. No branch to pick, this workflow does the rest.
+#
+# This is the public showcase repo. The workflow uploads only docs/ (the
+# showcase site). The app source lives in a separate private repo and is not
+# part of this deploy.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'docs/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:      # lets you deploy on demand from the Actions tab
+
+# Least privilege: read the repo, write to Pages, mint the deploy token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel an in-flight Pages deploy; just queue the next one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build + deploy docs/
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload docs/ as the Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

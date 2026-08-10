@@ -7,7 +7,7 @@
       Local-first, privacy-first notes app. Optional per-note cloud sync.
       No trackers, no ads, no AI. Built with Flutter + Supabase.
     About > Website:
-      https://devbehindyou.github.io/Project-Atomic-Notes-New/
+      https://devbehindyou.github.io/Project-Atomic-Notes/
     About > Topics:
       flutter, supabase, notes-app, local-first, privacy, offline-first,
       no-tracking, open-source, android, dart, end-to-end-encryption
