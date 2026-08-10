@@ -175,7 +175,7 @@ The UI is the **Technical Editorial** system in practice: ink on paper, interrup
 
 ## Privacy &amp; Security
 
-Precision matters more here than sounding impressive. This section is deliberately exact.
+Precision matters more here than sounding impressive. This section is deliberately exact. For the full, plain-language data-handling disclosure, see [TRANSPARENCY.md](TRANSPARENCY.md).
 
 **What is protected today**
 
