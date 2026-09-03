@@ -1,0 +1,21 @@
+# This project is developed on Windows but built on Linux/macOS CI runners.
+# Shell scripts must keep LF endings or the runner fails with a "bad
+# interpreter" error the moment it tries to execute them.
+*.sh      text eol=lf
+gradlew   text eol=lf
+
+# Windows-only scripts keep CRLF.
+*.bat     text eol=crlf
+gradlew.bat text eol=crlf
+
+# Never line-ending-normalise binaries.
+*.jar     binary
+*.png     binary
+*.jpg     binary
+*.ico     binary
+*.ttf     binary
+*.otf     binary
+*.gz      binary
+*.zip     binary
+*.keystore binary
+*.jks     binary

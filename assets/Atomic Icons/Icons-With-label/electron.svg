@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" width="100%" height="100%" role="img" aria-label="Electron">
+  <rect width="320" height="380" fill="#F4F5F1" />
+  <circle cx="160" cy="150" r="46" fill="#3A2FF0" />
+  <text x="160" y="310" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="900" fill="#15171B" text-anchor="middle" letter-spacing="1">ELECTRON</text>
+  <text x="160" y="338" font-family="'JetBrains Mono', Consolas, Menlo, monospace" font-size="14" fill="#15171B" opacity="0.6" text-anchor="middle" letter-spacing="2">e&#8315;  &#183;  NEGATIVE CHARGE</text>
+</svg>
