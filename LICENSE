@@ -1,21 +1,189 @@
-MIT License
+ATOMIC NOTES SOURCE-AVAILABLE LICENSE
+Version 1.0, effective 28 September 2026
 
-Copyright (c) 2026 DevBehindYou 
+Copyright (c) 2026 Ashutosh Sharma (DevBehindYou). All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This repository is public so that anyone can read the code and check how
+Atomic Notes handles their data. Being able to read the code does not make it
+open source. The Software is proprietary. This License lists the only things
+you may do with it. Anything it does not expressly allow is prohibited.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+By viewing, downloading, installing or otherwise using the Software, you agree
+to this License. If you do not agree, do not use the Software.
+
+
+1. DEFINITIONS
+
+"Licensor" means Ashutosh Sharma, who publishes as DevBehindYou, and anyone
+the Licensor assigns this Software to.
+
+"Software" means everything in this repository, in every version published on
+or after the Effective Date: source code, compiled builds, configuration,
+documentation, text, designs, images, icons, animations, and the Atomic Notes
+names and brand elements.
+
+"Official Release" means a build of the Software published by the Licensor,
+signed with the Licensor's release key, on the Licensor's GitHub Releases page
+or another channel the Licensor names in writing.
+
+"Effective Date" means 28 September 2026.
+
+"You" means the individual or organization exercising a permission under this
+License.
+
+
+2. WHAT YOU MAY DO
+
+Subject to your compliance with this License, the Licensor grants you a
+personal, non-exclusive, non-transferable, non-sublicensable, revocable,
+royalty-free permission to:
+
+  (a) View and read. View and read the Software on GitHub to evaluate it and
+      to verify the Licensor's privacy and security statements.
+
+  (b) Use the product. Download, install and use Official Releases on devices
+      you own or control, for your own personal use or your organization's
+      internal use.
+
+  (c) Verify. Build the Software on a device you control, only to check that
+      it matches the published source or an Official Release. You must not
+      install that build on anyone else's device, share it, or keep using it
+      in place of an Official Release.
+
+  (d) Research security. Study the Software to find security
+      vulnerabilities, and report them privately under Section 5.
+
+  (e) Use GitHub features. Make the copies that GitHub's own features create
+      when you view, star or fork a public repository, to the extent GitHub's
+      Terms of Service require. A fork gives you no rights beyond this
+      License.
+
+
+3. WHAT YOU MAY NOT DO
+
+Except as Section 2 expressly allows, you may not, and may not help or allow
+anyone else to:
+
+  (a) copy, reproduce or store the Software or any part of it, including
+      individual files, functions, snippets, algorithms as expressed in the
+      code, designs, text or assets;
+
+  (b) modify, translate, adapt or create derivative works of the Software;
+
+  (c) distribute, publish, sell, rent, lease, lend, sublicense or otherwise
+      make the Software, or any build of it, available to anyone;
+
+  (d) build, sign, publish or distribute your own builds of the Software, or
+      submit the Software or a build of it to any app store;
+
+  (e) use the Software or any part of it in another application, product,
+      service or library, whether commercial or not;
+
+  (f) use the Software to design, build or improve a product or service that
+      competes with Atomic Notes;
+
+  (g) host or run the Software to provide a service to others;
+
+  (h) use the Software or any part of it to train, fine-tune, evaluate or
+      prompt any machine-learning or artificial-intelligence system, or
+      include it in any dataset;
+
+  (i) remove, change or hide any copyright, license or attribution notice;
+      or
+
+  (j) use the names "Atomic Notes", "Atomi", "Atomic Energy" or "Atomic
+      Coins", the app icon, the mascot or any other brand element, except to
+      refer truthfully to the Licensor's own product.
+
+
+4. OWNERSHIP
+
+The Software is licensed, not sold. The Licensor keeps all right, title and
+interest in the Software, including all copyrights, trade secrets and
+trademarks. No rights are granted by implication, estoppel or otherwise. Any
+use outside this License infringes the Licensor's rights.
+
+
+5. SECURITY RESEARCH
+
+Security research under Section 2(d) must be done in good faith. Report what
+you find privately, through GitHub's private vulnerability reporting for this
+repository if it is enabled, or through the contact details on the Licensor's
+GitHub profile at https://github.com/DevBehindYou. Give the Licensor a
+reasonable time to fix the issue before you disclose it. Do not access,
+change or keep anyone else's data, and do not disrupt any service. The
+Licensor will not bring a claim under this License against research that
+follows these rules.
+
+
+6. CONTRIBUTIONS
+
+Feedback, issues and suggestions are welcome, but you are not required to
+give any. If you submit code, text, designs or other material to the Licensor
+in any form, including a pull request, issue or comment, you grant the
+Licensor a perpetual, worldwide, irrevocable, royalty-free, transferable and
+sublicensable license to use, copy, modify, distribute and otherwise exploit
+it for any purpose, and you confirm that you have the right to grant that
+license. Contributing gives you no rights in the Software.
+
+
+7. EARLIER VERSIONS
+
+Versions of this repository published before the Effective Date were made
+available under the MIT License. Anyone who received one of those earlier
+versions keeps the rights the MIT License gave them for that version only.
+This License applies to every version published on or after the Effective
+Date, and to every change made on or after it.
+
+
+8. THIRD-PARTY COMPONENTS
+
+Third-party libraries, fonts and other components included in or used by the
+Software remain under their own licenses. This License does not apply to
+them and does not limit any right their licenses give you.
+
+
+9. TERMINATION
+
+Your permissions under this License end automatically, without notice, if
+you break any of its terms. When they end, you must stop using the Software
+and destroy every copy you have, other than Official Releases you are still
+allowed to use under a separate right. Sections 3, 4, 6, 7 and 9 to 13
+survive termination.
+
+The Licensor may publish new versions of this License. A new version applies
+to Software published after it.
+
+
+10. NO WARRANTY
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+
+
+11. LIMITATION OF LIABILITY
+
+TO THE FULLEST EXTENT THE LAW ALLOWS, IN NO EVENT SHALL THE LICENSOR BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OF OR OTHER DEALINGS IN THE SOFTWARE, INCLUDING ANY LOSS
+OF DATA, PROFITS OR GOODWILL.
+
+
+12. ENFORCEMENT
+
+A breach of this License may cause the Licensor harm that money cannot fully
+repair. The Licensor may seek an injunction and any other remedy the law
+allows. If a court finds any part of this License unenforceable, that part is
+limited to the minimum extent necessary and the rest stays in force. Failure
+to enforce any term is not a waiver of it.
+
+
+13. ENTIRE LICENSE AND PERMISSIONS
+
+This License is the entire agreement about the Software between you and the
+Licensor, unless you have a separate written agreement signed by the
+Licensor. To do anything this License does not allow, ask the Licensor for
+written permission at https://github.com/DevBehindYou. Only a written
+permission from the Licensor counts.

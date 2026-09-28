@@ -1,4 +1,2 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://devbehindyou.github.io/Project-Atomic-Notes/sitemap.xml
