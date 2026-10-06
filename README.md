@@ -14,7 +14,7 @@ and it now lives in two new places.</p>
 <p>
   <a href="https://github.com/DevBehindYou/Atomic-Notes-App-V0.2"><b>App repository</b></a>
   &nbsp;·&nbsp;
-  <a href="https://atomic-notes-community.vercel.app"><b>Website</b></a>
+  <a href="https://atomic-notes.devbehindyou.com"><b>Website</b></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/DevBehindYou/Atomic-Notes-App-V0.2/releases/latest"><b>Download the latest APK</b></a>
 </p>
@@ -29,12 +29,12 @@ and it now lives in two new places.</p>
 | :--- | :--- |
 | Download the app (Android 9 or newer) | [Latest release](https://github.com/DevBehindYou/Atomic-Notes-App-V0.2/releases/latest) |
 | Read the app's code, docs and changelog | [DevBehindYou/Atomic-Notes-App-V0.2](https://github.com/DevBehindYou/Atomic-Notes-App-V0.2) |
-| See features, the FAQ, live updates and the blog | [Atomic Notes website](https://atomic-notes-community.vercel.app) |
+| See features, the FAQ, live updates and the blog | [Atomic Notes website](https://atomic-notes.devbehindyou.com) |
 | Check what the app collects and what it protects | [TRANSPARENCY.md](https://github.com/DevBehindYou/Atomic-Notes-App-V0.2/blob/main/TRANSPARENCY.md) |
 
 ## What is Atomic Notes?
 
-**Atomic Notes is a free notes app for Android that keeps your notes on your phone first and syncs them to a private folder in your own Google Drive.** It has no AI features, no ads and no analytics. An optional vault encrypts every note on the device with AES-256-GCM, so the sync server and Google only ever store ciphertext. Version 2.03.4 shipped on 27 September 2026.
+**Atomic Notes is a free notes app for Android that keeps your notes on your phone first and syncs them to a private folder in your own Google Drive.** It has no AI features, no ads and no analytics. An optional vault encrypts every note on the device with AES-256-GCM, so the sync server and Google only ever store ciphertext. Version 2.03.5 shipped on 28 September 2026.
 
 ## What changed since this repository
 
